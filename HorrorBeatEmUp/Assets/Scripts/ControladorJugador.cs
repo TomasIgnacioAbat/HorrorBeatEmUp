@@ -47,6 +47,7 @@ public class ControladorJugador : MonoBehaviour
 
     [Header("Salud")]
     public int vidaActual = 5;
+    public int vidaMaxima = 5;
     public float tiempoDeAturdimiento = 0.4f; 
     public float tiempoDeInvulnerabilidad = 1f; 
     private bool esInvulnerable = false;
@@ -54,7 +55,11 @@ public class ControladorJugador : MonoBehaviour
     void Start()
     {
         rbJugador = GetComponent<Rigidbody2D>();
-        
+        vidaActual = vidaMaxima;
+        if(UIManager.Instance != null)
+        { 
+            UIManager.Instance.ActualizarBarraVida(1f);
+        }
         
         posicionYVisualInicial = visualTransform.localPosition.y; 
     }
@@ -189,14 +194,22 @@ public class ControladorJugador : MonoBehaviour
 
         vidaActual -= daño;
         Debug.Log("Vida del jugador: " + vidaActual);
-
-        if (vidaActual <= 0)
-        {
-            // Luego llamamos al GameManager o parecido para la pantalla de Game Over
-            Debug.Log("¡Jugador Derrotado!");
-            return;
+        if (UIManager.Instance != null)
+        { 
+            float porcentajeVida = (float)vidaActual / vidaMaxima;
+            UIManager.Instance.ActualizarBarraVida(porcentajeVida);
         }
 
+        if (vidaActual <= 0)
+    {
+        Debug.Log("¡Jugador Derrotado!");
+        if (GameManager.Instance != null)
+        {
+            // GameManager.Instance.GameOver();
+        }
+        return; 
+    }
+        
         StartCoroutine(ProcesarImpacto());
     }
 

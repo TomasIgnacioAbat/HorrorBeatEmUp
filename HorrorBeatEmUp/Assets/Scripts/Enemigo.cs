@@ -168,6 +168,12 @@ public class Enemigo : MonoBehaviour
         if (estaMuerto) return;
 
         vidaActual -= cantidad;
+        if (vidaActual < 0) vidaActual = 0;
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ActualizarVidaEnemigo(vidaActual, vidaMaxima);
+        }
 
         if (vidaActual <= 0)
         {
