@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemigoBase : MonoBehaviour
+public class Enemigo : MonoBehaviour
 {
     public int vida = 3;
 
     // Esta función es la que el jugador va a llamar cuando acierte un golpe
-    public void RecibirDaño(int daño)
+    public void RecibirDano(int daño)
     {
         vida -= daño;
         Debug.Log("¡Auch! Vida restante: " + vida);

@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ControladorJugador.cs" />
-    <Compile Include="Assets\Scripts\EnemigoBase.cs" />
+    <Compile Include="Assets\Scripts\Enemigo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
