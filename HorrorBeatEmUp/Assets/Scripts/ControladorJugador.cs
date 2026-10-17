@@ -21,6 +21,7 @@ public class ControladorJugador : MonoBehaviour
     private float multiplicadorDeVelocidadAlCorrer = 1f;
     private Vector2 direccionDeInput;
     private Rigidbody2D rbJugador;
+    public Transform pies;
 
     [Header("Salto Falso")]
     public Transform visualTransform;
@@ -109,7 +110,7 @@ public class ControladorJugador : MonoBehaviour
     void ManejarSaltoFalso()
     {
         
-        if (Input.GetKeyDown(KeyCode.K) && !estaSaltando)
+        if ((Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.Space)) && !estaSaltando)
         {
             estaSaltando = true;
             velocidadVerticalActual = fuerzaDeSalto;
@@ -225,4 +226,5 @@ public class ControladorJugador : MonoBehaviour
         esInvulnerable = false;
         sprite.color = Color.white;
     }
+
 }
