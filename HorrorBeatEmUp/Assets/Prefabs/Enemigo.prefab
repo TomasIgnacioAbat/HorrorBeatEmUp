@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5164103092423767970
+--- !u!1 &3983732768685057113
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5164103092423767976}
-  - component: {fileID: 5164103092423767977}
-  - component: {fileID: 5164103092423767982}
-  - component: {fileID: 5164103092423767983}
-  - component: {fileID: 5164103092423767980}
-  - component: {fileID: 5164103092423767981}
+  - component: {fileID: 3983732768685057107}
+  - component: {fileID: 3983732768685057106}
+  - component: {fileID: 3983732768685057109}
+  - component: {fileID: 3983732768685057108}
+  - component: {fileID: 3983732768685057111}
+  - component: {fileID: 3983732768685057110}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -21,28 +21,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5164103092423767976
+--- !u!4 &3983732768685057107
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164103092423767970}
+  m_GameObject: {fileID: 3983732768685057113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.46, y: 0.04, z: 0}
+  m_LocalPosition: {x: -1.7298434, y: 1.5154223, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5164103092423767977
+--- !u!212 &3983732768685057106
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164103092423767970}
+  m_GameObject: {fileID: 3983732768685057113}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,15 +87,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &5164103092423767982
+  m_SpriteSortPoint: 1
+--- !u!95 &3983732768685057109
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164103092423767970}
+  m_GameObject: {fileID: 3983732768685057113}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dad1d1404520dc34fa2d0d77c5cd9878, type: 2}
@@ -109,15 +109,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &5164103092423767983
+--- !u!50 &3983732768685057108
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164103092423767970}
-  m_BodyType: 0
+  m_GameObject: {fileID: 3983732768685057113}
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -130,13 +130,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5164103092423767980
+--- !u!61 &3983732768685057111
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164103092423767970}
+  m_GameObject: {fileID: 3983732768685057113}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -156,13 +156,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &5164103092423767981
+--- !u!114 &3983732768685057110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164103092423767970}
+  m_GameObject: {fileID: 3983732768685057113}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35414e5188536354d96bd7b60d97431c, type: 3}
@@ -170,6 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadX: 3
   multiplicadorDeProfundidad: 0.6
-  distanciaAtaque: 1.2
+  distanciaAtaqueBase: 1.3
+  tiempoEntreAtaques: 2
+  vidaMaxima: 3
   jugadorTransform: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 3983732768685057109}
