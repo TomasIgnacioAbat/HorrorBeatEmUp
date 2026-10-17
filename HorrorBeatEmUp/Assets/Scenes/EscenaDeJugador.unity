@@ -132,8 +132,8 @@ GameObject:
   m_Component:
   - component: {fileID: 91858875}
   - component: {fileID: 91858874}
-  - component: {fileID: 91858873}
   - component: {fileID: 91858872}
+  - component: {fileID: 91858876}
   m_Layer: 6
   m_Name: EnemigoBase
   m_TagString: Untagged
@@ -167,19 +167,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &91858873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91858871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a410a7cd65564ba4e9c2346c0e885e2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vida: 3
 --- !u!212 &91858874
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -247,6 +234,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &91858876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91858871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdfde302c970d842a48e828710a3c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,13 +484,16 @@ MonoBehaviour:
   gravedadFalsa: 25
   estadoActual: 0
   duracionAtaque: 0.5
-  puntoDeAtaque: {fileID: 1510794436}
-  radioDeAtaque: 1.5
+  puntoDeAtaque: {fileID: 0}
+  radioDeAtaque: 0.5
   "da\xF1oDeAtaque": 1
   capaEnemigos:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   rangoDeProfundidad: 0.3
+  vidaActual: 5
+  tiempoDeAturdimiento: 0.4
+  tiempoDeInvulnerabilidad: 1
 --- !u!50 &2014011713
 Rigidbody2D:
   serializedVersion: 4
