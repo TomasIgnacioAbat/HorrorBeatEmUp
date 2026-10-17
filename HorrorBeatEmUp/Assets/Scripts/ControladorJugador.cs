@@ -110,7 +110,7 @@ public class ControladorJugador : MonoBehaviour
     void ManejarSaltoFalso()
     {
         
-        if (Input.GetKeyDown(KeyCode.K) && !estaSaltando)
+        if ((Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.Space)) && !estaSaltando)
         {
             estaSaltando = true;
             velocidadVerticalActual = fuerzaDeSalto;
