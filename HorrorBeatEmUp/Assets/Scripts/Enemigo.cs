@@ -1,8 +1,13 @@
 using System.Collections;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> 77827aa6d3195fb6bcaac06141e28b84fb150239
 using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
+<<<<<<< HEAD
     [Header("Configuración de Movimiento")]
     public float velocidadX = 3.0f;
     public float multiplicadorDeProfundidad = 0.6f;
@@ -143,3 +148,23 @@ if (Input.GetKeyDown(KeyCode.K))
     }
 }
 }
+=======
+    public int vida = 3;
+
+    // Esta función es la que el jugador va a llamar cuando acierte un golpe
+    public void RecibirDano(int daño)
+    {
+        vida -= daño;
+        Debug.Log("¡Auch! Vida restante: " + vida);
+
+        // Feedback visual rápido para la Game Jam (cambia de color un instante)
+        // anim.SetTrigger("Hit"); 
+
+        if (vida <= 0)
+        {
+            Debug.Log("Enemigo derrotado");
+            Destroy(gameObject); // O pasarlo al estado de muerto
+        }
+    }
+}
+>>>>>>> 77827aa6d3195fb6bcaac06141e28b84fb150239
