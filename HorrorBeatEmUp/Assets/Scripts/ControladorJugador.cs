@@ -50,6 +50,8 @@ public class ControladorJugador : MonoBehaviour
     public float tiempoDeAturdimiento = 0.4f; 
     public float tiempoDeInvulnerabilidad = 1f; 
     private bool esInvulnerable = false;
+    [Header("Animación")]
+    public Animator anim;
 
     void Start()
     {
@@ -99,6 +101,10 @@ public class ControladorJugador : MonoBehaviour
         {
             IniciarAtaque();
         }
+
+        // Le pasamos la magnitud del input al Animator. 
+        // Si no presionas nada, es 0 (Idle). Si caminas, es mayor a 0 (Caminar).
+        anim.SetFloat("Velocidad", direccionDeInput.magnitude);
     }
 
     void FixedUpdate()
@@ -114,6 +120,7 @@ public class ControladorJugador : MonoBehaviour
         {
             estaSaltando = true;
             velocidadVerticalActual = fuerzaDeSalto;
+            anim.SetTrigger("Salto");
         }
 
         if (estaSaltando)
@@ -133,6 +140,7 @@ public class ControladorJugador : MonoBehaviour
                 visualTransform.localPosition = new Vector3(visualTransform.localPosition.x, posicionYVisualInicial, visualTransform.localPosition.z);
                 estaSaltando = false;
                 velocidadVerticalActual = 0f;
+                anim.SetTrigger("EstaEnElSuelo");
             }
         }
     }
@@ -141,8 +149,7 @@ public class ControladorJugador : MonoBehaviour
     {
         estadoActual = EstadoJugador.Atacando;
 
-        // Para hacer la animación de ataque
-        // anim.SetTrigger("Atacar");
+        anim.SetTrigger("Ataque");
 
         StartCoroutine(FinalizarAtaque());
     }
@@ -205,6 +212,8 @@ public class ControladorJugador : MonoBehaviour
         // 1. Bloquea al jugador y lo hace invulnerable
         estadoActual = EstadoJugador.RecibiendoDaño;
         esInvulnerable = true;
+
+        anim.SetTrigger("Daño");
         
         // Feedback visual rápido: pintamos el sprite de rojo
         SpriteRenderer sprite = visualTransform.GetComponent<SpriteRenderer>();
