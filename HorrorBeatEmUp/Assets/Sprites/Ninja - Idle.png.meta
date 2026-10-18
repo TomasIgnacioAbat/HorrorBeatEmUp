@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 168
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,19 +96,19 @@ TextureImporter:
       name: Ninja - Idle_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 4
-        width: 10
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 124
+        y: 24
+        width: 63
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f6193db429e7ec4f8427e5da84a4447
-      internalID: -298210314
+      spriteID: 8853596c28706ec4191a82b948c8690e
+      internalID: -466382509
       vertices: []
       indices: 
       edges: []
@@ -117,19 +117,19 @@ TextureImporter:
       name: Ninja - Idle_1
       rect:
         serializedVersion: 2
-        x: 62
-        y: 4
-        width: 10
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 370
+        y: 24
+        width: 62
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b63fbc7987a1994bb8aa11e735cb8b5
-      internalID: -1672450132
+      spriteID: ee2d67667f8c03b4485e8c81394933fa
+      internalID: 1170682950
       vertices: []
       indices: 
       edges: []
@@ -138,19 +138,19 @@ TextureImporter:
       name: Ninja - Idle_2
       rect:
         serializedVersion: 2
-        x: 103
-        y: 4
-        width: 11
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 617
+        y: 24
+        width: 69
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 389d19962e0b29142b8bfa07e9287b11
-      internalID: 166553225
+      spriteID: 9a80081c8266b68448ae519942ff4271
+      internalID: 1988335581
       vertices: []
       indices: 
       edges: []
@@ -159,19 +159,19 @@ TextureImporter:
       name: Ninja - Idle_3
       rect:
         serializedVersion: 2
-        x: 144
-        y: 4
-        width: 11
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 863
+        y: 24
+        width: 69
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2934b02bb722d3d47a1cf5319960f8b3
-      internalID: -954127061
+      spriteID: e7482ba1eb251404abce9ba096ce22af
+      internalID: 955752755
       vertices: []
       indices: 
       edges: []
@@ -180,19 +180,19 @@ TextureImporter:
       name: Ninja - Idle_4
       rect:
         serializedVersion: 2
-        x: 185
-        y: 4
-        width: 11
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1108
+        y: 24
+        width: 69
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f66790eefa70584f81cd1793dd7fa67
-      internalID: -169558658
+      spriteID: 027d0f762a4fe7a468345f3688303484
+      internalID: 560290404
       vertices: []
       indices: 
       edges: []
@@ -201,19 +201,19 @@ TextureImporter:
       name: Ninja - Idle_5
       rect:
         serializedVersion: 2
-        x: 226
-        y: 4
-        width: 11
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1355
+        y: 24
+        width: 68
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ada81ed8e94f8044bba35dfec8cac209
-      internalID: 1896924535
+      spriteID: 6f64c1c950d879845bfa4e32c2d5c22e
+      internalID: -54326354
       vertices: []
       indices: 
       edges: []
@@ -222,19 +222,166 @@ TextureImporter:
       name: Ninja - Idle_6
       rect:
         serializedVersion: 2
-        x: 267
-        y: 4
-        width: 11
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1601
+        y: 24
+        width: 69
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d5f88b205feb1b4eaf52b1a68e500dd
-      internalID: -1547275760
+      spriteID: 432795dcddd68444c8bb13e465397a07
+      internalID: 519637955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_7
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 24
+        width: 63
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33de4a337b13fbb4aa4e9e162424f322
+      internalID: -781801152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_8
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 24
+        width: 62
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1956c2f59e60a454499a3b619e7f3259
+      internalID: -471755879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_9
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 24
+        width: 56
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc75d4aa7081e09469ea1608ab4147a3
+      internalID: -533382272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_10
+      rect:
+        serializedVersion: 2
+        x: 2585
+        y: 24
+        width: 55
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96081832547eaea41be26e2d7788ea1a
+      internalID: -1232151910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_11
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 24
+        width: 57
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63883b57d009644e93d05725a6864a9
+      internalID: -873772195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_12
+      rect:
+        serializedVersion: 2
+        x: 3077
+        y: 24
+        width: 56
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 527de1ea078cb964fb92e01fe1aaad89
+      internalID: 1261189988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja - Idle_13
+      rect:
+        serializedVersion: 2
+        x: 3323
+        y: 24
+        width: 55
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2235f7826b7049b4784d6f4c6a685671
+      internalID: 1187036537
       vertices: []
       indices: 
       edges: []
@@ -250,13 +397,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ninja - Idle_0: -298210314
-      Ninja - Idle_1: -1672450132
-      Ninja - Idle_2: 166553225
-      Ninja - Idle_3: -954127061
-      Ninja - Idle_4: -169558658
-      Ninja - Idle_5: 1896924535
-      Ninja - Idle_6: -1547275760
+      Ninja - Idle_0: -466382509
+      Ninja - Idle_1: 1170682950
+      Ninja - Idle_10: -1232151910
+      Ninja - Idle_11: -873772195
+      Ninja - Idle_12: 1261189988
+      Ninja - Idle_13: 1187036537
+      Ninja - Idle_2: 1988335581
+      Ninja - Idle_3: 955752755
+      Ninja - Idle_4: 560290404
+      Ninja - Idle_5: -54326354
+      Ninja - Idle_6: 519637955
+      Ninja - Idle_7: -781801152
+      Ninja - Idle_8: -471755879
+      Ninja - Idle_9: -533382272
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
