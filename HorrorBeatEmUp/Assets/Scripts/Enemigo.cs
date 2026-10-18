@@ -182,6 +182,7 @@ public class Enemigo : MonoBehaviour
 
         if (vidaActual <= 0)
         {
+            GameManager.Instance.EnemigoDerrotado();
             Morir();
         }
         else

@@ -8,7 +8,8 @@ public enum EstadoJugador
     Normal,
     Atacando,
     RecibiendoDaño,
-    Huyendo
+    CinematicaHuida,
+    Runner
 }
 
 public class ControladorJugador : MonoBehaviour
@@ -21,7 +22,6 @@ public class ControladorJugador : MonoBehaviour
     private float multiplicadorDeVelocidadAlCorrer = 1f;
     private Vector2 direccionDeInput;
     private Rigidbody2D rbJugador;
-    public Transform pies;
 
     [Header("Salto Falso")]
     public Transform visualTransform;
@@ -51,6 +51,15 @@ public class ControladorJugador : MonoBehaviour
     public float tiempoDeAturdimiento = 0.4f; 
     public float tiempoDeInvulnerabilidad = 1f; 
     private bool esInvulnerable = false;
+
+    [Header("Animación")]
+    public Animator anim;
+
+    [Header("Modo Runner")]
+    public float velocidadRunner = 7f;
+    public float velocidadCambioCarril = 15f;
+    public float[] posicionesYCarriles = new float[3] { 1.5f, 0f, -1.5f }; // Arriba, Medio, Abajo
+    private int carrilActual = 1; // 0 = Arriba, 1 = Medio, 2 = Abajo
 
     void Start()
     {
@@ -100,16 +109,59 @@ public class ControladorJugador : MonoBehaviour
         ManejarSaltoFalso();
 
         
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && estadoActual != EstadoJugador.CinematicaHuida && estadoActual != EstadoJugador.Runner)
         {
             IniciarAtaque();
+        }
+
+        if (estadoActual == EstadoJugador.Runner)
+        {
+            // 1. Cambio de carril con Arriba/Abajo o W/S
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (carrilActual > 0) carrilActual--;
+            }
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (carrilActual < 2) carrilActual++;
+            }
+
+            // 2. El salto falso (aprovechamos la función que ya tenías)
+            ManejarSaltoFalso();
+        }
+
+        // --- CONTROL DE ANIMACIONES ---
+        if (estadoActual == EstadoJugador.Runner || estadoActual == EstadoJugador.CinematicaHuida)
+        {
+            // En modo Runner o Cinematica, forzamos la animación de correr siempre
+            anim.SetFloat("Velocidad", 1f); 
+        }
+        else
+        {
+            // En modo Normal (Beat 'em up), depende de si el jugador toca las teclas
+            anim.SetFloat("Velocidad", direccionDeInput.magnitude); 
         }
     }
 
     void FixedUpdate()
     {
-        
-        rbJugador.MovePosition(rbJugador.position + direccionDeInput * (velocidad * multiplicadorDeVelocidadAlCorrer) * Time.fixedDeltaTime);
+        if (estadoActual == EstadoJugador.Normal)
+        {
+            // Tu movimiento Beat 'em up original
+            rbJugador.MovePosition(rbJugador.position + direccionDeInput * (velocidad * multiplicadorDeVelocidadAlCorrer) * Time.fixedDeltaTime);
+        }
+        else if (estadoActual == EstadoJugador.Runner || estadoActual == EstadoJugador.CinematicaHuida)
+        {
+            // MOVIMIENTO RUNNER: Corre a la derecha sin parar
+            Vector2 nuevaPos = rbJugador.position;
+            nuevaPos.x += velocidadRunner * Time.fixedDeltaTime;
+            
+            // Se mueve suavemente hacia el carril seleccionado en Y
+            float yObjetivo = posicionesYCarriles[carrilActual];
+            nuevaPos.y = Mathf.MoveTowards(nuevaPos.y, yObjetivo, velocidadCambioCarril * Time.fixedDeltaTime);
+            
+            rbJugador.MovePosition(nuevaPos);
+        }
     }
 
     void ManejarSaltoFalso()
@@ -119,6 +171,7 @@ public class ControladorJugador : MonoBehaviour
         {
             estaSaltando = true;
             velocidadVerticalActual = fuerzaDeSalto;
+            anim.SetTrigger("Salto");
         }
 
         if (estaSaltando)
@@ -138,6 +191,7 @@ public class ControladorJugador : MonoBehaviour
                 visualTransform.localPosition = new Vector3(visualTransform.localPosition.x, posicionYVisualInicial, visualTransform.localPosition.z);
                 estaSaltando = false;
                 velocidadVerticalActual = 0f;
+                anim.SetTrigger("EstaEnElSuelo");
             }
         }
     }
@@ -146,8 +200,7 @@ public class ControladorJugador : MonoBehaviour
     {
         estadoActual = EstadoJugador.Atacando;
 
-        // Para hacer la animación de ataque
-        // anim.SetTrigger("Atacar");
+        anim.SetTrigger("Ataque");
 
         StartCoroutine(FinalizarAtaque());
     }
@@ -171,10 +224,8 @@ public class ControladorJugador : MonoBehaviour
             }
         }
 
-        // 4. Espera el resto de la animación
         yield return new WaitForSeconds(duracionAtaque / 2f);
         
-        // Devuelve el control del personaje
         estadoActual = EstadoJugador.Normal;
     }
 
@@ -189,8 +240,7 @@ public class ControladorJugador : MonoBehaviour
 
     public void RecibirDaño(int daño)
     {
-        // Si ya está invulnerable, o si ya pasó a la fase de terror/huida, ignora el golpe
-        if (esInvulnerable || estadoActual == EstadoJugador.Huyendo) return;
+        if (esInvulnerable || estadoActual == EstadoJugador.CinematicaHuida || estadoActual == EstadoJugador.Runner) return;
 
         vidaActual -= daño;
         Debug.Log("Vida del jugador: " + vidaActual);
@@ -215,27 +265,23 @@ public class ControladorJugador : MonoBehaviour
 
     IEnumerator ProcesarImpacto()
     {
-        // 1. Bloquea al jugador y lo hace invulnerable
         estadoActual = EstadoJugador.RecibiendoDaño;
         esInvulnerable = true;
+
+        anim.SetTrigger("Daño");
         
-        // Feedback visual rápido: pintamos el sprite de rojo
         SpriteRenderer sprite = visualTransform.GetComponent<SpriteRenderer>();
         sprite.color = Color.red;
         
-        // Acá dispararía la animación: anim.SetTrigger("RecibirDaño");
 
-        // 2. Espera a que pase el aturdimiento
         yield return new WaitForSeconds(tiempoDeAturdimiento);
 
-        // 3. Devolvemos el control, pero sigue invulnerable
         estadoActual = EstadoJugador.Normal;
         sprite.color = new Color(1f, 1f, 1f, 0.5f); // Lo hace semitransparente
 
         // 4. Esperamos el resto del tiempo de gracia (iFrames)
         yield return new WaitForSeconds(tiempoDeInvulnerabilidad);
 
-        // 5. Vuelve completamente a la normalidad
         esInvulnerable = false;
         sprite.color = Color.white;
     }
