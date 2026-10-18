@@ -94,15 +94,42 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (panelDistorsion != null) panelDistorsion.SetActive(false);
 
+        yield return new WaitForSeconds(1f);
+
+        if (panelDistorsion != null) panelDistorsion.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        if (panelDistorsion != null) panelDistorsion.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        if (panelDistorsion != null) panelDistorsion.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        if (panelDistorsion != null) panelDistorsion.SetActive(false);
+
+        if (textoDialogo != null)
+        {
+            textoDialogo.text = "¿Qué?";
+            textoDialogo.gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (panelDistorsion != null) panelDistorsion.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        if (panelDistorsion != null) panelDistorsion.SetActive(false);
+
         // --- 3. JUGADOR MIRA A LA IZQUIERDA Y HABLA ---
         jugador.visualTransform.localScale = new Vector3(-1, 1, 1);
         if (textoDialogo != null)
         {
             textoDialogo.text = "¿Qué está pasando?";
-            print("Aparece Texto");
             textoDialogo.gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(1f);
+
+        if (panelDistorsion != null) panelDistorsion.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        if (panelDistorsion != null) panelDistorsion.SetActive(false);
 
         // --- 4. LA CRIATURA ENTRA A ESCENA ---
         criaturaPerseguidora.transform.position = puntoAparicionCriatura.position;
@@ -117,6 +144,10 @@ public class GameManager : MonoBehaviour
             );
             yield return null; 
         }
+
+        if (panelDistorsion != null) panelDistorsion.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        if (panelDistorsion != null) panelDistorsion.SetActive(false);
 
         yield return new WaitForSeconds(1f); // Pausa dramática cuando se miran
 
