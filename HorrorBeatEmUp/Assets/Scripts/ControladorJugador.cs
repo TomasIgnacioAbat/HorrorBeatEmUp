@@ -8,7 +8,8 @@ public enum EstadoJugador
     Normal,
     Atacando,
     RecibiendoDaño,
-    Huyendo
+    CinematicaHuida,
+    Runner
 }
 
 public class ControladorJugador : MonoBehaviour
@@ -21,7 +22,6 @@ public class ControladorJugador : MonoBehaviour
     private float multiplicadorDeVelocidadAlCorrer = 1f;
     private Vector2 direccionDeInput;
     private Rigidbody2D rbJugador;
-    public Transform pies;
 
     [Header("Salto Falso")]
     public Transform visualTransform;
@@ -50,8 +50,15 @@ public class ControladorJugador : MonoBehaviour
     public float tiempoDeAturdimiento = 0.4f; 
     public float tiempoDeInvulnerabilidad = 1f; 
     private bool esInvulnerable = false;
+
     [Header("Animación")]
     public Animator anim;
+
+    [Header("Modo Runner")]
+    public float velocidadRunner = 7f;
+    public float velocidadCambioCarril = 15f;
+    public float[] posicionesYCarriles = new float[3] { 1.5f, 0f, -1.5f }; // Arriba, Medio, Abajo
+    private int carrilActual = 1; // 0 = Arriba, 1 = Medio, 2 = Abajo
 
     void Start()
     {
@@ -97,9 +104,25 @@ public class ControladorJugador : MonoBehaviour
         ManejarSaltoFalso();
 
         
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && estadoActual != EstadoJugador.CinematicaHuida && estadoActual != EstadoJugador.Runner)
         {
             IniciarAtaque();
+        }
+
+        if (estadoActual == EstadoJugador.Runner)
+        {
+            // 1. Cambio de carril con Arriba/Abajo o W/S
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (carrilActual > 0) carrilActual--;
+            }
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (carrilActual < 2) carrilActual++;
+            }
+
+            // 2. El salto falso (aprovechamos la función que ya tenías)
+            ManejarSaltoFalso();
         }
 
         // Le pasamos la magnitud del input al Animator. 
@@ -109,8 +132,23 @@ public class ControladorJugador : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        rbJugador.MovePosition(rbJugador.position + direccionDeInput * (velocidad * multiplicadorDeVelocidadAlCorrer) * Time.fixedDeltaTime);
+        if (estadoActual == EstadoJugador.Normal)
+        {
+            // Tu movimiento Beat 'em up original
+            rbJugador.MovePosition(rbJugador.position + direccionDeInput * (velocidad * multiplicadorDeVelocidadAlCorrer) * Time.fixedDeltaTime);
+        }
+        else if (estadoActual == EstadoJugador.Runner || estadoActual == EstadoJugador.CinematicaHuida)
+        {
+            // MOVIMIENTO RUNNER: Corre a la derecha sin parar
+            Vector2 nuevaPos = rbJugador.position;
+            nuevaPos.x += velocidadRunner * Time.fixedDeltaTime;
+            
+            // Se mueve suavemente hacia el carril seleccionado en Y
+            float yObjetivo = posicionesYCarriles[carrilActual];
+            nuevaPos.y = Mathf.MoveTowards(nuevaPos.y, yObjetivo, velocidadCambioCarril * Time.fixedDeltaTime);
+            
+            rbJugador.MovePosition(nuevaPos);
+        }
     }
 
     void ManejarSaltoFalso()
@@ -192,7 +230,7 @@ public class ControladorJugador : MonoBehaviour
     public void RecibirDaño(int daño)
     {
         // Si ya está invulnerable, o si ya pasó a la fase de terror/huida, ignora el golpe
-        if (esInvulnerable || estadoActual == EstadoJugador.Huyendo) return;
+        if (esInvulnerable || estadoActual == EstadoJugador.CinematicaHuida || estadoActual == EstadoJugador.Runner) return;
 
         vidaActual -= daño;
         Debug.Log("Vida del jugador: " + vidaActual);
