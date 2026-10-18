@@ -259,7 +259,7 @@ public class ControladorJugador : MonoBehaviour
         Debug.Log("¡Jugador Derrotado!");
         if (GameManager.Instance != null)
         {
-            // GameManager.Instance.GameOver();
+            GameManager.Instance.MostrarGameOver();
         }
         return; 
     }

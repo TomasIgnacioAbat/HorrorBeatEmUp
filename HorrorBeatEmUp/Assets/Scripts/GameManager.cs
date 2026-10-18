@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
         if (panelVictoria != null) panelVictoria.SetActive(true);
     }
 
-    private void MostrarGameOver()
+    public void MostrarGameOver()
     {
         print("¡El monstruo te atrapó!");
         DetenerActores(); 
