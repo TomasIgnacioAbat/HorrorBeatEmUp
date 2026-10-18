@@ -97,11 +97,11 @@ public class ControladorJugador : MonoBehaviour
             multiplicadorDeVelocidadAlCorrer = 1f;
         }
 
-        if (movX > 0)
+        if (movX > 0 && !(estadoActual == EstadoJugador.Runner))
         {
             visualTransform.localScale = new Vector3(1, 1, 1);
         }
-        else if (movX < 0)
+        else if (movX < 0 && !(estadoActual == EstadoJugador.Runner))
         {
             visualTransform.localScale = new Vector3(-1, 1, 1);
         }
