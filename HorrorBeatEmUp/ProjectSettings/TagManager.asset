@@ -49,3 +49,6 @@ TagManager:
   - name: Personajes
     uniqueID: 388533165
     locked: 0
+  - name: Criatura
+    uniqueID: 425235193
+    locked: 0
