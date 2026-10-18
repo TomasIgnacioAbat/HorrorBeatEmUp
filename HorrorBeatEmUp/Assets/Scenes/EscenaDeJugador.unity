@@ -463,6 +463,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395641322025160208, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Size.y
+      value: 1.287149
+      objectReference: {fileID: 0}
+    - target: {fileID: 395641322025160208, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.14357458
+      objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057106, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -511,6 +519,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: jugadorTransform
+      value: 
+      objectReference: {fileID: 2014011715}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: distanciaAtaqueBase
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: multiplicadorDeProfundidad
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057113, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_Name
       value: Enemigo (1)
@@ -518,6 +538,10 @@ PrefabInstance:
     - target: {fileID: 3983732768685057113, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445479241223457028, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638de430160598848b21019c8376c368, type: 3}
@@ -815,6 +839,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395641322025160208, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28715
+      objectReference: {fileID: 0}
+    - target: {fileID: 395641322025160208, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527308667288256528, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.057557702
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527308667288256528, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2219
+      objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057106, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -864,8 +904,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: jugadorTransform
+      value: 
+      objectReference: {fileID: 2014011715}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: distanciaAtaqueBase
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: multiplicadorDeProfundidad
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057113, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_Name
@@ -874,6 +922,10 @@ PrefabInstance:
     - target: {fileID: 3983732768685057113, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445479241223457028, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638de430160598848b21019c8376c368, type: 3}
@@ -887,7 +939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1094532250}
   - component: {fileID: 1094532249}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: MuroInferior
   m_TagString: Muro
   m_Icon: {fileID: 0}
@@ -964,6 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fc6bf394eefca4bafc570eaac359f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barraVidaAmarilla: {fileID: 0}
+  panelUIEnemigo: {fileID: 0}
+  barraVidaEnemigo: {fileID: 0}
 --- !u!4 &1198264683
 Transform:
   m_ObjectHideFlags: 0
@@ -1096,7 +1151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1412209133}
   - component: {fileID: 1412209132}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: MuroSuperior
   m_TagString: Muro
   m_Icon: {fileID: 0}
@@ -1266,6 +1321,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395641322025160208, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3158627
+      objectReference: {fileID: 0}
+    - target: {fileID: 395641322025160208, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15793133
+      objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057106, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1314,6 +1377,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: jugadorTransform
+      value: 
+      objectReference: {fileID: 2014011715}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: distanciaAtaqueBase
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983732768685057110, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: multiplicadorDeProfundidad
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3983732768685057113, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_Name
       value: Enemigo (2)
@@ -1321,6 +1396,10 @@ PrefabInstance:
     - target: {fileID: 3983732768685057113, guid: 638de430160598848b21019c8376c368, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445479241223457028, guid: 638de430160598848b21019c8376c368, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638de430160598848b21019c8376c368, type: 3}
@@ -1427,10 +1506,11 @@ MonoBehaviour:
     m_Bits: 64
   rangoDeProfundidad: 0.3
   vidaActual: 10
+  vidaMaxima: 5
   tiempoDeAturdimiento: 0.4
   tiempoDeInvulnerabilidad: 1
   anim: {fileID: 1260597119}
-  velocidadRunner: 0.2
+  velocidadRunner: 1
   velocidadCambioCarril: 15
   posicionesYCarriles:
   - -4.2
