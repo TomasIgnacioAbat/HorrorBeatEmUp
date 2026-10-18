@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 11add55030372a64885fa0d9d8094e1f
+guid: 0d0e9f497d3eb61479a12810bd3c556c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 168
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,13 +93,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_0
+      name: NINJA - hurt_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 0
         y: 0
-        width: 28
-        height: 50
+        width: 106
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -107,20 +107,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f2e9f6c2826db6459fc445e85e7ec12
-      internalID: 2139503566
+      spriteID: 5bbde41fd82fdc04287918f624fa1a60
+      internalID: -2131607948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_1
+      name: NINJA - hurt_1
       rect:
         serializedVersion: 2
-        x: 127
+        x: 345
         y: 0
-        width: 28
-        height: 49
+        width: 106
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +128,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c586e7756744c043bb14c8fdb690aed
-      internalID: -1306195646
+      spriteID: f43b8a87eba14ac449fad18f45438db4
+      internalID: 963304061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_2
+      name: NINJA - hurt_2
       rect:
         serializedVersion: 2
-        x: 223
+        x: 707
         y: 0
-        width: 28
-        height: 48
+        width: 106
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38297d9ba1931ce4598a2f362fb91957
-      internalID: -127162514
+      spriteID: e8736d8e8738bfb418ea0830da66ff6b
+      internalID: -799353818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_3
+      name: NINJA - hurt_3
       rect:
         serializedVersion: 2
-        x: 319
+        x: 1061
         y: 0
-        width: 28
-        height: 49
+        width: 115
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,8 +170,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69ffa890de586864dab056b0721e5b45
-      internalID: 1643035541
+      spriteID: e0c2fd043e6cd2a488dfa906a178556b
+      internalID: -648362465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NINJA - hurt_4
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 0
+        width: 115
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29f727770dad6d43888195c9731a733
+      internalID: -862835758
       vertices: []
       indices: 
       edges: []
@@ -187,10 +208,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      idle_0: 2139503566
-      idle_1: -1306195646
-      idle_2: -127162514
-      idle_3: 1643035541
+      NINJA - hurt_0: -2131607948
+      NINJA - hurt_1: 963304061
+      NINJA - hurt_2: -799353818
+      NINJA - hurt_3: -648362465
+      NINJA - hurt_4: -862835758
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
