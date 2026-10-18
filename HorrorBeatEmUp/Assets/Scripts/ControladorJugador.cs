@@ -24,6 +24,7 @@ public class ControladorJugador : MonoBehaviour
     private Rigidbody2D rbJugador;
 
     [Header("Salto Falso")]
+    public Collider2D colisionadorPies; // Arrastra aquí el objeto "Pies" (o el collider de los pies)
     public Transform visualTransform;
     public float fuerzaDeSalto = 10f;
     public float gravedadFalsa = 25f;
@@ -166,32 +167,35 @@ public class ControladorJugador : MonoBehaviour
 
     void ManejarSaltoFalso()
     {
-        
+        // 1. Al iniciar el salto
         if ((Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.Space)) && !estaSaltando)
         {
             estaSaltando = true;
             velocidadVerticalActual = fuerzaDeSalto;
             anim.SetTrigger("Salto");
+
+            // NUEVO: Desactivamos el colisionador para que los obstáculos lo ignoren en el aire
+            if (colisionadorPies != null) colisionadorPies.enabled = false; 
         }
 
         if (estaSaltando)
         {
-            
             velocidadVerticalActual -= gravedadFalsa * Time.deltaTime;
-            
             
             Vector3 nuevaPosicionLocal = visualTransform.localPosition;
             nuevaPosicionLocal.y += velocidadVerticalActual * Time.deltaTime;
             visualTransform.localPosition = nuevaPosicionLocal;
 
-            
+            // 2. Al tocar el suelo de nuevo
             if (visualTransform.localPosition.y <= posicionYVisualInicial)
             {
-                
                 visualTransform.localPosition = new Vector3(visualTransform.localPosition.x, posicionYVisualInicial, visualTransform.localPosition.z);
                 estaSaltando = false;
                 velocidadVerticalActual = 0f;
                 anim.SetTrigger("EstaEnElSuelo");
+
+                // NUEVO: Volvemos a activar el colisionador para que pueda chocar de nuevo
+                if (colisionadorPies != null) colisionadorPies.enabled = true; 
             }
         }
     }

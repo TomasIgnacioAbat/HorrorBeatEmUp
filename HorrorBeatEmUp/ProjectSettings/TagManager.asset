@@ -56,3 +56,6 @@ TagManager:
   - name: Obstaculos
     uniqueID: 282639565
     locked: 0
+  - name: Jugador
+    uniqueID: 1965363649
+    locked: 0
