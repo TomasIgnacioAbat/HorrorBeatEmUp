@@ -56,6 +56,11 @@ public class Enemigo : MonoBehaviour
             {
                 return; 
             }
+            Vector3 pos = transform.position;
+            float limiteSuperiorY = -1.2f; 
+            float limiteInferiorY = -3.5f; 
+            pos.y = Mathf.Clamp(pos.y, limiteInferiorY, limiteSuperiorY);
+            transform.position = pos;
         }
 
         float distanciaObjetivoX = distanciaAtaqueBase + Mathf.Abs(offsetPuestoAtaque.x);
@@ -168,9 +173,16 @@ public class Enemigo : MonoBehaviour
         if (estaMuerto) return;
 
         vidaActual -= cantidad;
+        if (vidaActual < 0) vidaActual = 0;
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ActualizarVidaEnemigo(vidaActual, vidaMaxima);
+        }
 
         if (vidaActual <= 0)
         {
+            GameManager.Instance.EnemigoDerrotado();
             Morir();
         }
         else

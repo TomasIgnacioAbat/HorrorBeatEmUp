@@ -16,10 +16,10 @@ TagManager:
   - Enemigos
   - CuerpoJugador
   - PiesJugador
+  - PiesEnemigos
+  - MuroIzquierda
   - Muros
-  - 
-  - 
-  - 
+  - MuroDerecha
   - 
   - 
   - 
