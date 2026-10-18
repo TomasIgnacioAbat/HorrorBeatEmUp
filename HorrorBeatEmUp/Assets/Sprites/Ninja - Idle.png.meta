@@ -96,12 +96,12 @@ TextureImporter:
       name: Ninja - Idle_0
       rect:
         serializedVersion: 2
-        x: 124
-        y: 24
-        width: 63
-        height: 120
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 74
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,12 +117,12 @@ TextureImporter:
       name: Ninja - Idle_1
       rect:
         serializedVersion: 2
-        x: 370
-        y: 24
-        width: 62
-        height: 120
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 326
+        y: 0
+        width: 76
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,12 +138,12 @@ TextureImporter:
       name: Ninja - Idle_2
       rect:
         serializedVersion: 2
-        x: 617
-        y: 24
-        width: 69
-        height: 127
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 654
+        y: 0
+        width: 76
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: Ninja - Idle_3
       rect:
         serializedVersion: 2
-        x: 863
-        y: 24
-        width: 69
-        height: 127
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 982
+        y: 0
+        width: 77
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,12 +180,12 @@ TextureImporter:
       name: Ninja - Idle_4
       rect:
         serializedVersion: 2
-        x: 1108
-        y: 24
-        width: 69
-        height: 127
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1311
+        y: 0
+        width: 74
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,12 +201,12 @@ TextureImporter:
       name: Ninja - Idle_5
       rect:
         serializedVersion: 2
-        x: 1355
-        y: 24
-        width: 68
-        height: 127
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1630
+        y: 0
+        width: 83
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,12 +222,12 @@ TextureImporter:
       name: Ninja - Idle_6
       rect:
         serializedVersion: 2
-        x: 1601
-        y: 24
-        width: 69
-        height: 127
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1958
+        y: 0
+        width: 83
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,12 +243,12 @@ TextureImporter:
       name: Ninja - Idle_7
       rect:
         serializedVersion: 2
-        x: 1846
-        y: 24
-        width: 63
-        height: 120
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 2278
+        y: 0
+        width: 91
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,12 +264,12 @@ TextureImporter:
       name: Ninja - Idle_8
       rect:
         serializedVersion: 2
-        x: 2092
-        y: 24
-        width: 62
-        height: 120
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 2606
+        y: 0
+        width: 91
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,12 +285,12 @@ TextureImporter:
       name: Ninja - Idle_9
       rect:
         serializedVersion: 2
-        x: 2339
-        y: 24
-        width: 56
-        height: 115
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 2934
+        y: 0
+        width: 91
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: Ninja - Idle_10
       rect:
         serializedVersion: 2
-        x: 2585
-        y: 24
-        width: 55
-        height: 115
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3263
+        y: 0
+        width: 91
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -327,12 +327,12 @@ TextureImporter:
       name: Ninja - Idle_11
       rect:
         serializedVersion: 2
-        x: 2830
-        y: 24
-        width: 57
-        height: 115
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3591
+        y: 0
+        width: 91
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -348,12 +348,12 @@ TextureImporter:
       name: Ninja - Idle_12
       rect:
         serializedVersion: 2
-        x: 3077
-        y: 24
-        width: 56
-        height: 115
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3925
+        y: 0
+        width: 85
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -369,12 +369,12 @@ TextureImporter:
       name: Ninja - Idle_13
       rect:
         serializedVersion: 2
-        x: 3323
-        y: 24
-        width: 55
-        height: 115
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 4253
+        y: 0
+        width: 83
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
