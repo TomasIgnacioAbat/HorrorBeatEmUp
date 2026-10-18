@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuPrincipal.unity
     guid: 5d07bb301650b694b9605f00ea148e18
   - enabled: 1
+    path: Assets/Scenes/EscenaMapeo.unity
+    guid: 34a99b0c536f76c4a85811eb35075c87
+  - enabled: 1
     path: Assets/Scenes/EscenaDeJugador.unity
     guid: b954c74fe734ec449b253ecd1a1d2126
   m_configObjects: {}
