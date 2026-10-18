@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public float velocidadCaminataCriatura = 4f;
     public SpriteRenderer fondo;
     public Sprite fondo2;
+    public GameObject flechaAvanzar;
 
     [Header("Sistema Runner (Obstáculos y Meta)")]
     public Transform checkpointJugador;
@@ -33,6 +34,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Escenas")]
     public string nombreEscenaMenu = "MenuPrincipal"; // Pon el nombre exacto de la escena aquí
+
+    [Header("Sonidos")]
+    public AudioClip rugidoCriatura;
+    public AudioClip musicaPelea;
 
     public static GameManager Instance;
 
@@ -47,6 +52,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject); 
         }
+
+        AudioManager.Instance.ReproducirMusica(musicaPelea);
     }
 
     public void EnemigoDerrotado()
@@ -69,6 +76,8 @@ public class GameManager : MonoBehaviour
     IEnumerator SecuenciaDeTerror()
     {
         print("Jugador comenzó la cinematica");
+
+        if(flechaAvanzar != null) flechaAvanzar.SetActive(true);
         
         // --- 1. BLOQUEAR AL JUGADOR Y APAGAR FÍSICAS ---
         jugador.estadoActual = EstadoJugador.CinematicaHuida;
@@ -101,6 +110,10 @@ public class GameManager : MonoBehaviour
         // Llegó a la marca, lo frenamos
         jugador.anim.SetFloat("Velocidad", 0f); 
 
+        if(flechaAvanzar != null) flechaAvanzar.SetActive(false);
+
+        AudioManager.Instance.DetenerMusica();
+
         // --- 2. EFECTO DISTORSIÓN (ESTÁTICA ROJA) ---
         if (panelDistorsion != null) panelDistorsion.SetActive(true);
         yield return new WaitForSeconds(0.5f);
@@ -117,6 +130,8 @@ public class GameManager : MonoBehaviour
         if (panelDistorsion != null) panelDistorsion.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         if (panelDistorsion != null) panelDistorsion.SetActive(false);
+
+        AudioManager.Instance.ReproducirSonido(rugidoCriatura, 1);
 
         if (textoDialogo != null)
         {
@@ -180,7 +195,6 @@ public class GameManager : MonoBehaviour
         jugador.GetComponent<Rigidbody2D>().simulated = true;
         criaturaPerseguidora.GetComponent<MonstruoRunner>().EmpezarAPerseguir(jugador.velocidadRunner);
     }
-
     // Esta función la llamarán los obstáculos al tocarte
     public void JugadorChocaObstaculo()
     {
