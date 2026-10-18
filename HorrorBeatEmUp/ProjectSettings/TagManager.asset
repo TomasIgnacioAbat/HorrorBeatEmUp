@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Muro
+  - PiesJugador
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Criatura
     uniqueID: 425235193
+    locked: 0
+  - name: Obstaculos
+    uniqueID: 282639565
     locked: 0

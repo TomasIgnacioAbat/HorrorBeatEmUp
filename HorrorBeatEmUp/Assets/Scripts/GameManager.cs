@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // Necesario para el cuadro de diálogo
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,17 @@ public class GameManager : MonoBehaviour
     public Transform puntoAparicionCriatura; 
     public Transform puntoEntradaCriatura; 
     public float velocidadCaminataCriatura = 4f;
+    public SpriteRenderer fondo;
+    public Sprite fondo2;
+
+    [Header("Sistema Runner (Obstáculos y Meta)")]
+    public Transform checkpointJugador;
+    public Transform checkpointCriatura;
+    public GameObject panelGameOver;
+    public GameObject panelVictoria;
+
+    [Header("Escenas")]
+    public string nombreEscenaMenu = "MenuPrincipal"; // Pon el nombre exacto de la escena aquí
 
     public static GameManager Instance;
 
@@ -130,6 +142,7 @@ public class GameManager : MonoBehaviour
         if (panelDistorsion != null) panelDistorsion.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         if (panelDistorsion != null) panelDistorsion.SetActive(false);
+        fondo.sprite = fondo2;
 
         // --- 4. LA CRIATURA ENTRA A ESCENA ---
         criaturaPerseguidora.transform.position = puntoAparicionCriatura.position;
@@ -165,5 +178,73 @@ public class GameManager : MonoBehaviour
         jugador.estadoActual = EstadoJugador.Runner;
         jugador.enabled = true;
         jugador.GetComponent<Rigidbody2D>().simulated = true;
+        criaturaPerseguidora.GetComponent<MonstruoRunner>().EmpezarAPerseguir(jugador.velocidadRunner);
+    }
+
+    // Esta función la llamarán los obstáculos al tocarte
+    public void JugadorChocaObstaculo()
+    {
+        // 1. Restamos vida directamente
+        jugador.vidaActual--;
+        Debug.Log("Vida restante: " + jugador.vidaActual);
+
+        // Actualizamos la UI si existe
+        if (UIManager.Instance != null)
+        {
+            float porcentajeVida = (float)jugador.vidaActual / jugador.vidaMaxima;
+            UIManager.Instance.ActualizarBarraVida(porcentajeVida);
+        }
+
+        // 2. Comprobamos si perdimos
+        if (jugador.vidaActual <= 0)
+        {
+            MostrarGameOver();
+        }
+        else
+        {
+            // 3. Si aún hay vida, regresamos a todos al Checkpoint
+            jugador.transform.position = checkpointJugador.position;
+            criaturaPerseguidora.transform.position = checkpointCriatura.position;
+            
+            // Opcional: Feedback visual rápido
+            print("¡Choque! Regresando al Checkpoint...");
+        }
+    }
+
+    public void NivelCompletado()
+    {
+        print("¡El jugador escapó!");
+        DetenerActores(); // Apagamos a los personajes en vez de congelar el tiempo
+        if (panelVictoria != null) panelVictoria.SetActive(true);
+    }
+
+    private void MostrarGameOver()
+    {
+        print("¡El monstruo te atrapó!");
+        DetenerActores(); 
+        if (panelGameOver != null) panelGameOver.SetActive(true);
+    }
+
+    // Nueva función que congela solo a los personajes
+    private void DetenerActores()
+    {
+        // 1. Frenamos y bloqueamos al jugador
+        jugador.anim.SetFloat("Velocidad", 0f);
+        jugador.enabled = false; 
+        jugador.GetComponent<Rigidbody2D>().simulated = false;
+
+        // 2. Apagamos el motor del monstruo para que deje de avanzar
+        if (criaturaPerseguidora != null)
+        {
+            MonstruoRunner scriptMonstruo = criaturaPerseguidora.GetComponent<MonstruoRunner>();
+            if (scriptMonstruo != null) scriptMonstruo.enabled = false;
+        }
+    }
+
+    // Esta función la vas a conectar a los botones de los paneles de Victoria y Derrota
+    public void IrAlMenuPrincipal()
+    {
+        print("Cambio de escena");
+        SceneManager.LoadScene(nombreEscenaMenu);
     }
 }
