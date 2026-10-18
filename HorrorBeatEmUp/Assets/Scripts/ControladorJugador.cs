@@ -130,9 +130,17 @@ public class ControladorJugador : MonoBehaviour
             ManejarSaltoFalso();
         }
 
-        // Le pasamos la magnitud del input al Animator. 
-        // Si no presionas nada, es 0 (Idle). Si caminas, es mayor a 0 (Caminar).
-        anim.SetFloat("Velocidad", direccionDeInput.magnitude);
+        // --- CONTROL DE ANIMACIONES ---
+        if (estadoActual == EstadoJugador.Runner || estadoActual == EstadoJugador.CinematicaHuida)
+        {
+            // En modo Runner o Cinematica, forzamos la animación de correr siempre
+            anim.SetFloat("Velocidad", 1f); 
+        }
+        else
+        {
+            // En modo Normal (Beat 'em up), depende de si el jugador toca las teclas
+            anim.SetFloat("Velocidad", direccionDeInput.magnitude); 
+        }
     }
 
     void FixedUpdate()
@@ -216,10 +224,8 @@ public class ControladorJugador : MonoBehaviour
             }
         }
 
-        // 4. Espera el resto de la animación
         yield return new WaitForSeconds(duracionAtaque / 2f);
         
-        // Devuelve el control del personaje
         estadoActual = EstadoJugador.Normal;
     }
 
@@ -234,7 +240,6 @@ public class ControladorJugador : MonoBehaviour
 
     public void RecibirDaño(int daño)
     {
-        // Si ya está invulnerable, o si ya pasó a la fase de terror/huida, ignora el golpe
         if (esInvulnerable || estadoActual == EstadoJugador.CinematicaHuida || estadoActual == EstadoJugador.Runner) return;
 
         vidaActual -= daño;
@@ -260,29 +265,23 @@ public class ControladorJugador : MonoBehaviour
 
     IEnumerator ProcesarImpacto()
     {
-        // 1. Bloquea al jugador y lo hace invulnerable
         estadoActual = EstadoJugador.RecibiendoDaño;
         esInvulnerable = true;
 
         anim.SetTrigger("Daño");
         
-        // Feedback visual rápido: pintamos el sprite de rojo
         SpriteRenderer sprite = visualTransform.GetComponent<SpriteRenderer>();
         sprite.color = Color.red;
         
-        // Acá dispararía la animación: anim.SetTrigger("RecibirDaño");
 
-        // 2. Espera a que pase el aturdimiento
         yield return new WaitForSeconds(tiempoDeAturdimiento);
 
-        // 3. Devolvemos el control, pero sigue invulnerable
         estadoActual = EstadoJugador.Normal;
         sprite.color = new Color(1f, 1f, 1f, 0.5f); // Lo hace semitransparente
 
         // 4. Esperamos el resto del tiempo de gracia (iFrames)
         yield return new WaitForSeconds(tiempoDeInvulnerabilidad);
 
-        // 5. Vuelve completamente a la normalidad
         esInvulnerable = false;
         sprite.color = Color.white;
     }

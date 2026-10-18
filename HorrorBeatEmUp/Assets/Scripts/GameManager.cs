@@ -6,12 +6,12 @@ using UnityEngine.Video; // Necesario para el video
 public class GameManager : MonoBehaviour
 {
     [Header("Progreso del Nivel")]
-    public int enemigosRestantes = 3; // Ponemos 3 porque son los que tienes en tu nivel
+    public int enemigosRestantes = 3;
     public VideoPlayer reproductorVideo;
     public ControladorJugador jugador;
     public GameObject criaturaPerseguidora;
     public static GameManager Instance;
-    public GameObject canvasVideo; // Arrastra el Canvas aquí en el Inspector
+    public GameObject muroDerecha;
 
     void Start()
     {
@@ -32,14 +32,13 @@ public class GameManager : MonoBehaviour
 
         if (enemigosRestantes <= 0)
         {
-            // ¡Ya no quedan enemigos! Empezamos la cinemática
             IniciarTransicionRunner();
         }
     }
 
-    // Llama a esto cuando empiece el terror
     public void IniciarTransicionRunner()
     {
+        muroDerecha.SetActive(false);
         StartCoroutine(SecuenciaDeTerror());
     }
 
@@ -48,12 +47,11 @@ public class GameManager : MonoBehaviour
 
         criaturaPerseguidora.SetActive(true);
         jugador.estadoActual = EstadoJugador.CinematicaHuida;
+        print("Jugador comenzó la cinematica");
         jugador.anim.SetFloat("Velocidad", 1f);
 
-        // 5. Esperamos 2 segundos de huida automática
-        yield return new WaitForSeconds(2f);
-
-        // 6. ¡Devolvemos el control al jugador para que esquive!
+        yield return new WaitForSeconds(1f); // Cambiar a 2f si agregamos la cinematica de aparicion del monstruo
+        print("Jugador comenzó a correr");
         jugador.estadoActual = EstadoJugador.Runner;
     }
 }
