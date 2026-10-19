@@ -50,11 +50,11 @@ TagManager:
   - name: Personajes
     uniqueID: 388533165
     locked: 0
-  - name: Criatura
-    uniqueID: 425235193
-    locked: 0
   - name: Obstaculos
     uniqueID: 282639565
+    locked: 0
+  - name: Criatura
+    uniqueID: 425235193
     locked: 0
   - name: Jugador
     uniqueID: 1965363649

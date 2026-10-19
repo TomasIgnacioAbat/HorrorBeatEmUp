@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public ControladorJugador jugador;
     public GameObject criaturaPerseguidora;
     public GameObject muroDerecha;
+
+    [Header("UI")]
+    public TextMeshProUGUI textoVidasJugador;
+    public GameObject barraDeVidaDelJugador;
     
     [Header("Cinemática UI")]
     public GameObject panelDistorsion; // El panel rojo que tapa la pantalla
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         AudioManager.Instance.ReproducirMusica(musicaPelea);
+        if(textoVidasJugador != null && jugador != null)textoVidasJugador.text = "Vidas: " + jugador.vidasRunner;
     }
 
     public void EnemigoDerrotado()
@@ -179,8 +184,8 @@ public class GameManager : MonoBehaviour
         if (panelDistorsion != null) panelDistorsion.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         if (panelDistorsion != null) panelDistorsion.SetActive(false);
-
-        yield return new WaitForSeconds(1f); // Pausa dramática cuando se miran
+        if(barraDeVidaDelJugador != null) barraDeVidaDelJugador.SetActive(false);
+        if(textoVidasJugador != null) textoVidasJugador.gameObject.SetActive(true);
 
         // --- 5. JUGADOR DICE OH NO ---
         if (textoDialogo != null) textoDialogo.text = "¡Oh no!";
@@ -203,18 +208,19 @@ public class GameManager : MonoBehaviour
     public void JugadorChocaObstaculo()
     {
         // 1. Restamos vida directamente
-        jugador.vidaActual--;
-        Debug.Log("Vida restante: " + jugador.vidaActual);
+        jugador.vidasRunner--;
+        Debug.Log("Vida restante: " + jugador.vidasRunner);
+        if(textoVidasJugador != null) textoVidasJugador.text = "Vidas: " + jugador.vidasRunner;
 
         // Actualizamos la UI si existe
         if (UIManager.Instance != null)
         {
-            float porcentajeVida = (float)jugador.vidaActual / jugador.vidaMaxima;
+            float porcentajeVida = (float)jugador.vidasRunner / jugador.vidaMaxima;
             UIManager.Instance.ActualizarBarraVida(porcentajeVida);
         }
 
         // 2. Comprobamos si perdimos
-        if (jugador.vidaActual <= 0)
+        if (jugador.vidasRunner <= 0)
         {
             MostrarGameOver();
         }

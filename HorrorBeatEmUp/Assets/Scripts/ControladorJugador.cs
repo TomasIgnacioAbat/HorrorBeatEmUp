@@ -61,6 +61,7 @@ public class ControladorJugador : MonoBehaviour
     public float velocidadCambioCarril = 15f;
     public float[] posicionesYCarriles = new float[3] { 1.5f, 0f, -1.5f }; // Arriba, Medio, Abajo
     private int carrilActual = 1; // 0 = Arriba, 1 = Medio, 2 = Abajo
+    public int vidasRunner;
 
     [Header("Sonidos")]
     public AudioClip sonidoDeGolpe;
