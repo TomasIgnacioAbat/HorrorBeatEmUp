@@ -9,18 +9,19 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSFX;
     public float volumenCancion;
     public float volumenSFX;
-    void Start()
+    
+
+    void Awake()
     {
         if(Instance != null)
         {
-            Destroy(this);
-        } else
+            Destroy(this.gameObject); // Destruye el objeto para no dejar basura
+        } 
+        else
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            DontDestroyOnLoad(this.gameObject);
         }
-        volumenCancion = 0.5f;
-        volumenSFX = 0.2f;
     }
 
     void Update()

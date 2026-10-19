@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     [Header("Sonidos")]
     public AudioClip rugidoCriatura;
     public AudioClip musicaPelea;
+    public AudioClip sonidoGameOver;
+    public AudioClip sonidoVictoria;
+    public AudioClip musicaRunner;
 
     public static GameManager Instance;
 
@@ -182,6 +185,7 @@ public class GameManager : MonoBehaviour
         // --- 5. JUGADOR DICE OH NO ---
         if (textoDialogo != null) textoDialogo.text = "¡Oh no!";
         yield return new WaitForSeconds(1f);
+        AudioManager.Instance.ReproducirMusica(musicaRunner);
 
         // --- 6. COMIENZA LA PERSECUCIÓN ---
         if (textoDialogo != null) textoDialogo.gameObject.SetActive(false);
@@ -228,14 +232,18 @@ public class GameManager : MonoBehaviour
     public void NivelCompletado()
     {
         print("¡El jugador escapó!");
+        AudioManager.Instance.DetenerMusica();
         DetenerActores(); // Apagamos a los personajes en vez de congelar el tiempo
+        AudioManager.Instance.ReproducirSonido(sonidoVictoria, 1);
         if (panelVictoria != null) panelVictoria.SetActive(true);
     }
 
     public void MostrarGameOver()
     {
         print("¡El monstruo te atrapó!");
+        AudioManager.Instance.DetenerMusica();
         DetenerActores(); 
+        AudioManager.Instance.ReproducirSonido(sonidoGameOver, 1);
         if (panelGameOver != null) panelGameOver.SetActive(true);
     }
 

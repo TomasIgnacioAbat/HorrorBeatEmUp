@@ -62,6 +62,9 @@ public class ControladorJugador : MonoBehaviour
     public float[] posicionesYCarriles = new float[3] { 1.5f, 0f, -1.5f }; // Arriba, Medio, Abajo
     private int carrilActual = 1; // 0 = Arriba, 1 = Medio, 2 = Abajo
 
+    [Header("Sonidos")]
+    public AudioClip sonidoDeGolpe;
+
     void Start()
     {
         rbJugador = GetComponent<Rigidbody2D>();
@@ -205,6 +208,8 @@ public class ControladorJugador : MonoBehaviour
         estadoActual = EstadoJugador.Atacando;
 
         anim.SetTrigger("Ataque");
+
+        AudioManager.Instance.ReproducirSonido(sonidoDeGolpe, 1);
 
         StartCoroutine(FinalizarAtaque());
     }

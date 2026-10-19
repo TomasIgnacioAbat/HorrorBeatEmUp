@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\MetaRunner.cs" />
     <Compile Include="Assets\Scripts\MonstruoRunner.cs" />
     <Compile Include="Assets\Scripts\MapeoManager.cs" />
+    <Compile Include="Assets\Scripts\AnimacionObstaculo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
