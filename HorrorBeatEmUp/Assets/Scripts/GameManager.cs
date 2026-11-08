@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    void Start()
+    void Awake()
     {
         if(Instance != null)
         {
@@ -59,9 +59,39 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject); 
         }
+        
+        textoVidasJugador = GameObject.Find("VidasJugador").GetComponent<TextMeshProUGUI>();
+        textoDialogo = GameObject.Find("TextoDialogo").GetComponent<TextMeshProUGUI>();
+        jugador = GameObject.Find("Jugador").GetComponent<ControladorJugador>();
+        criaturaPerseguidora = GameObject.Find("Demonio");
+        muroDerecha = GameObject.Find("MuroDerecha");
+        barraDeVidaDelJugador = GameObject.Find("UIBarraVida");
+        panelDistorsion = GameObject.Find("PanelDistorsion");
+        puntoDestinoJugador = GameObject.Find("PuntoDeDistorsionJugador").GetComponent<Transform>();
+        puntoAparicionCriatura = GameObject.Find("PuntoAparicionCriatura").GetComponent<Transform>();
+        puntoEntradaCriatura = GameObject.Find("PuntoEntradaCriatura").GetComponent<Transform>();
+        fondo = GameObject.Find("Fondo1").GetComponent<SpriteRenderer>();
+        fondo2 = (Sprite)Resources.Load("FondoMundoOscuro1");
+        flechaAvanzar = GameObject.Find("FlechaAvanzar");
+        checkpointJugador = GameObject.Find("RespawnJugadorRunner").GetComponent<Transform>();
+        checkpointCriatura = GameObject.Find("RespawnCriaturaRunner").GetComponent<Transform>();
+        panelGameOver = GameObject.Find("PanelGameOver");
+        panelVictoria = GameObject.Find("PanelVictoria");
+        rugidoCriatura = (AudioClip)Resources.Load("SonidoMosntruo8bit");
+        musicaPelea = (AudioClip)Resources.Load("musicaPelea");
+        sonidoGameOver = (AudioClip)Resources.Load("gameover");
+        sonidoVictoria = (AudioClip)Resources.Load("victory");
+        musicaRunner = (AudioClip)Resources.Load("MusicaRunner");
+    }
 
+    void Start()
+    {
+        
         AudioManager.Instance.ReproducirMusica(musicaPelea);
+        UIManager.Instance.ActualizarBarraVida(1f);
+        UIManager.Instance.ActualizarVidaEnemigo(3,3);
         if(textoVidasJugador != null && jugador != null)textoVidasJugador.text = "Vidas: " + jugador.vidasRunner;
+
     }
 
     public void EnemigoDerrotado()
